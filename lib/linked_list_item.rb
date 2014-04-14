@@ -15,15 +15,10 @@ class LinkedListItem
     if payload1.class == payload2.class
       payload1 <=> payload2
     else
-      if payload1.class == Symbol
-        1
-      elsif payload2.class == Symbol
-        -1
-      elsif payload1.class == Fixnum
-        -1
-      elsif payload2.class == Fixnum
-        1
-      end
+      precedence = [Fixnum, String, Symbol]
+      index1 = precedence.index(payload1.class)
+      index2 = precedence.index(payload2.class)
+      index1 <=> index2
     end
   end
 
