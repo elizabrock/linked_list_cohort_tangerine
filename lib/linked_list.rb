@@ -16,11 +16,11 @@ class LinkedList
   def get(i)
     raise IndexError if i < 0
     item = @first_item
-    raise IndexError if item.nil?
     i.times do
+      break if item.nil?
       item = item.next_list_item
-      raise IndexError if item.nil?
     end
+    raise IndexError if item.nil?
     item.payload
   end
 end
