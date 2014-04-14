@@ -14,13 +14,21 @@ class LinkedList
   end
 
   def get(i)
-    raise IndexError if i < 0
+    raise IndexError if i < 0 or i >= size
     item = @first_item
     i.times do
-      break if item.nil?
       item = item.next_list_item
     end
-    raise IndexError if item.nil?
     item.payload
+  end
+
+  def size
+    item = @first_item
+    i = 0
+    until item.nil?
+      i += 1
+      item = item.next_list_item
+    end
+    i
   end
 end
