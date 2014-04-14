@@ -27,4 +27,27 @@ class LinkedList
     end
     item.payload
   end
+
+  def last
+    if size == 0
+      nil
+    else
+      get(size - 1)
+    end
+  end
+
+  def to_s
+    if size == 0
+      "| |"
+    else
+      result = "| "
+      item = @first_item
+      until item.nil?
+        result << item.payload
+        result << ", " unless item.last?
+        item = item.next_list_item
+      end
+      result + " |"
+    end
+  end
 end
