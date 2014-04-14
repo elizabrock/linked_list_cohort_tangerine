@@ -116,12 +116,20 @@ class LinkedListTest < MiniTest::Unit::TestCase
     assert_equal('| foo |', ll.to_s)
   end
 
-  def test_15_to_s_a_long_list
+  def test_15a_to_s_a_long_list
     ll = LinkedList.new
     ll.add_item("foo")
     ll.add_item("bar")
     ll.add_item("grille")
     assert_equal '| foo, bar, grille |', ll.to_s
+  end
+
+  def test_15b_to_s_a_long_list
+    ll = LinkedList.new
+    ll.add_item(:foo)
+    ll.add_item("bar")
+    ll.add_item(123)
+    assert_equal '| :foo, bar, 123 |', ll.to_s
   end
 
   # # ========= Bonus ========== #
