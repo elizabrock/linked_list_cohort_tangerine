@@ -12,18 +12,20 @@ class LinkedListItem
     payload1 = self.payload
     payload2 = other_item.payload
 
-    if payload1.class == payload2.class
+    precedence = [Fixnum, String, Symbol]
+    index1 = precedence.index(payload1.class)
+    index2 = precedence.index(payload2.class)
+    class_equality = (index1 <=> index2)
+
+    if class_equality == 0
       payload1 <=> payload2
     else
-      precedence = [Fixnum, String, Symbol]
-      index1 = precedence.index(payload1.class)
-      index2 = precedence.index(payload2.class)
-      index1 <=> index2
+      class_equality
     end
   end
 
   def ===(other_item)
-    self.object_id == other_item.object_id
+    self.equal? other_item
   end
 
   def next_list_item=(item)
