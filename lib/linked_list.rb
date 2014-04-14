@@ -1,4 +1,9 @@
 class LinkedList
+  attr_reader :size
+
+  def initialize()
+    @size = 0
+  end
 
   def add_item(payload)
     lli = LinkedListItem.new(payload)
@@ -11,6 +16,7 @@ class LinkedList
       end
       item.next_list_item = lli
     end
+    @size += 1
   end
 
   def get(i)
@@ -20,15 +26,5 @@ class LinkedList
       item = item.next_list_item
     end
     item.payload
-  end
-
-  def size
-    item = @first_item
-    i = 0
-    until item.nil?
-      i += 1
-      item = item.next_list_item
-    end
-    i
   end
 end
