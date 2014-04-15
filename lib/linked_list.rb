@@ -23,20 +23,30 @@ class LinkedList
   end
 
   def get(i)
-    raise IndexError if i < 0 or i >= size
-    item = @first_item
-    i.times do
-      item = item.next_list_item
-    end
-    item.payload
+    get_item(i).payload
   end
   alias [] get
+
+  def []=(index, value)
+    get_item(index).payload = value
+  end
 
   def last
     if size == 0
       nil
     else
       get(size - 1)
+    end
+  end
+
+  def remove(index)
+    @size -= 1
+    if index == 0
+      @first_item = @first_item.next_list_item
+    else
+      previous_item = get_item( index - 1 )
+      next_list_item = previous_item.next_list_item.next_list_item
+      previous_item.next_list_item = next_list_item
     end
   end
 
@@ -49,5 +59,16 @@ class LinkedList
       item = item.next_list_item
     end
     result + " |"
+  end
+
+  private
+
+  def get_item(i)
+    raise IndexError if i < 0 or i >= size
+    item = @first_item
+    i.times do
+      item = item.next_list_item
+    end
+    item
   end
 end
