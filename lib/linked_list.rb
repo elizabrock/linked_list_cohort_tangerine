@@ -1,8 +1,11 @@
 class LinkedList
   attr_reader :size
 
-  def initialize()
+  def initialize(*payloads)
     @size = 0
+    payloads.each do |payload|
+      add_item(payload)
+    end
   end
 
   def add_item(payload)
@@ -26,6 +29,10 @@ class LinkedList
       item = item.next_list_item
     end
     item.payload
+  end
+
+  def [](index)
+    get(index)
   end
 
   def last
