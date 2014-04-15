@@ -30,10 +30,7 @@ class LinkedList
     end
     item.payload
   end
-
-  def [](index)
-    get(index)
-  end
+  alias [] get
 
   def last
     if size == 0
