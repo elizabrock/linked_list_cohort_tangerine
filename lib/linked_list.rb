@@ -31,6 +31,17 @@ class LinkedList
     get_item(index).payload = value
   end
 
+  def indexOf(payload)
+    item = @first_item
+    position = 0
+    until item.nil?
+      return position if item.payload == payload
+      position += 1
+      item = item.next_list_item
+    end
+    nil
+  end
+
   def last
     if size == 0
       nil
