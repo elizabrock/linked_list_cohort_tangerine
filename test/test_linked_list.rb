@@ -125,6 +125,7 @@ class LinkedListTest < MiniTest::Unit::TestCase
   end
 
   def test_15b_to_s_a_long_list
+    skip
     ll = LinkedList.new
     ll.add_item(:foo)
     ll.add_item("bar")

@@ -61,6 +61,15 @@ class LinkedList
     end
   end
 
+  def sorted?
+    item = @first_item
+    until item.nil? or item.last?
+      return false if item > item.next_list_item
+      item = item.next_list_item
+    end
+    true
+  end
+
   def to_s
     result = "|"
     item = @first_item
